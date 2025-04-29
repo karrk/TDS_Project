@@ -5,7 +5,7 @@ using UnityEngine;
 /// </summary>
 public abstract class InitBehaviour : MonoBehaviour, IInitable
 {
-    public abstract int InitOrder { get; }
+    public virtual int InitOrder { get; } = 0;
 
     public abstract void Init();
 
