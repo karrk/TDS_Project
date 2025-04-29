@@ -1,36 +1,35 @@
-# Conventions
+# ðŸ“Œ Conventions
 
-<br>
-<div style="background-color:#a3c2fe; color:black; padding:10px; font-size:25px; font-weight:bold; border-radius:8px;text-align:center;"> Git convention </div><br>
+## ðŸš€ Git convention
 
-## °³¿ä
+### ê°œìš”
 
-- ÇÁ·ÎÁ§Æ® ÁøÇà °£ Git Repository °ü¸®¿¡ ÀÖ¾î ÅëÀÏ¼º À¯Áö¸¦ À§ÇØ Git ConventionÀ» ÁöÁ¤ÇÏ°í °ü¸® °¡ÀÌµå¶óÀÎÀ¸·Î Àû¿ëÇÑ´Ù.<br><br>
+- í”„ë¡œì íŠ¸ ì§„í–‰ ê°„ Git Repository ê´€ë¦¬ì— ìžˆì–´ í†µì¼ì„± ìœ ì§€ë¥¼ ìœ„í•´ Git Conventionì„ ì§€ì •í•˜ê³  ê´€ë¦¬ ê°€ì´ë“œë¼ì¸ìœ¼ë¡œ ì ìš©í•œë‹¤.<br><br>
 
-## ±ÔÄ¢
+### ê·œì¹™
 
 ### `Branch`
 
 - Master(main)
 
-  - Á¤½Ä ¹öÀü ºôµå¿ë ºê·£Ä¡
-  - ½Ç¼ö ¹× ¹«ºÐº°ÇÑ ¼öÁ¤À» ¸·±â À§ÇØ ¿¢¼¼½º Á¦ÇÑ
+  - ì •ì‹ ë²„ì „ ë¹Œë“œìš© ë¸Œëžœì¹˜
+  - ì‹¤ìˆ˜ ë° ë¬´ë¶„ë³„í•œ ìˆ˜ì •ì„ ë§‰ê¸° ìœ„í•´ ì—‘ì„¸ìŠ¤ ì œí•œ
 
 - Develop
 
-  - ±â´É °³¹ß/±¸Çö¿ë ºê·£Ä¡
-  - ÀÌ ºê·£Ä¡¿¡¼­ ±â´ÉÀÛ¾÷(±¸Çö ¿ëµµ)¸¦ Ãß°¡ ºÐ¸®ÇÑ ÈÄ, ÀÛ¾÷ ¿Ï·á½Ã ÇØ´ç ºê·£Ä¡·Î Merge¸¦ ÁøÇàÇÑ´Ù.
-    - Merge½Ã Pull Request¸¦ È°¿ëÇÏ¿© Ãæµ¹ ´ëºñ, Ãæµ¹ ¹ß»ý½Ã ´ëÃ³¸¦ ÁØºñÇÑ´Ù.
+  - ê¸°ëŠ¥ ê°œë°œ/êµ¬í˜„ìš© ë¸Œëžœì¹˜
+  - ì´ ë¸Œëžœì¹˜ì—ì„œ ê¸°ëŠ¥ìž‘ì—…(êµ¬í˜„ ìš©ë„)ë¥¼ ì¶”ê°€ ë¶„ë¦¬í•œ í›„, ìž‘ì—… ì™„ë£Œì‹œ í•´ë‹¹ ë¸Œëžœì¹˜ë¡œ Mergeë¥¼ ì§„í–‰í•œë‹¤.
+    - Mergeì‹œ Pull Requestë¥¼ í™œìš©í•˜ì—¬ ì¶©ëŒ ëŒ€ë¹„, ì¶©ëŒ ë°œìƒì‹œ ëŒ€ì²˜ë¥¼ ì¤€ë¹„í•œë‹¤.
 
-- ±â´É ±¸Çö Branch
+- ê¸°ëŠ¥ êµ¬í˜„ Branch
 
-  - »ý¼º ºê·£Ä¡ ¸í : <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Type/ÀÛ¾÷³»¿ë</span>
+  - ìƒì„± ë¸Œëžœì¹˜ ëª… : <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Type/ìž‘ì—…ë‚´ìš©</span>
 
     - Type
 
-      - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Feat</span> : »õ·Î¿î ±â´É Ãß°¡
-      - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Fix</span> : ±âÁ¸ ±â´É ¹× ¹ö±× ¼öÁ¤
-      - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Test</span> : ±â´É Å×½ºÆ® Àü¿ë
+      - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Feat</span> : ìƒˆë¡œìš´ ê¸°ëŠ¥ ì¶”ê°€
+      - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Fix</span> : ê¸°ì¡´ ê¸°ëŠ¥ ë° ë²„ê·¸ ìˆ˜ì •
+      - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Test</span> : ê¸°ëŠ¥ í…ŒìŠ¤íŠ¸ ì „ìš©
 
     - ex > <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Feat/CharacterAnimation
     - ex > <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Fix/FlowerObject
@@ -38,52 +37,53 @@
 
 ### `Commit`
 
-- Commit ÁÖ±â
+- Commit ì£¼ê¸°
 
-  - Ãæµ¹ ¹× ¹ö±× ¹ß»ý½Ã Reset À» ¿ëÀÌÇÏ°Ô ÇÏ±â À§ÇØ ÀÛÀº ´ÜÀ§·Î ³ª´² Ä¿¹ÔÀ» ÁøÇàÇÑ´Ù.
-    - ex> ÀÌ¹ÌÁö ¸®¼Ò½º Ãß°¡, ½ºÅ©¸³Æ® »ý¼º, ÇÑ ´ÜÀ§ÀÇ ±â´É ±¸Çö ½Ã
-  - Ä¿¹Ô ¸Þ¼¼Áö´Â ¾Æ·¡ÀÇ ±ÔÄ¢À» µû¸£¸ç, ºÎ°¡ ¼³¸íÀÌ ÇÊ¿äÇÑ °æ¿ì Description ¶õ¿¡ ÀÛ¼ºÇÑ´Ù.
-  - ¸¸ÀÏ, ÀÛ¾÷ ³»¿ëÀÌ »ó´çÈ÷ ÀÛÀº°æ¿ì Git Message ¸¦ È°¿ëÇÏ¿© ÀÛ¾÷ ±â·ÏÀ» ³²±ä´Ù.
+  - ì¶©ëŒ ë° ë²„ê·¸ ë°œìƒì‹œ Reset ì„ ìš©ì´í•˜ê²Œ í•˜ê¸° ìœ„í•´ ìž‘ì€ ë‹¨ìœ„ë¡œ ë‚˜ëˆ  ì»¤ë°‹ì„ ì§„í–‰í•œë‹¤.
+    - ex> ì´ë¯¸ì§€ ë¦¬ì†ŒìŠ¤ ì¶”ê°€, ìŠ¤í¬ë¦½íŠ¸ ìƒì„±, í•œ ë‹¨ìœ„ì˜ ê¸°ëŠ¥ êµ¬í˜„ ì‹œ
+  - ì»¤ë°‹ ë©”ì„¸ì§€ëŠ” ì•„ëž˜ì˜ ê·œì¹™ì„ ë”°ë¥´ë©°, ë¶€ê°€ ì„¤ëª…ì´ í•„ìš”í•œ ê²½ìš° Description ëž€ì— ìž‘ì„±í•œë‹¤.
+  - ë§Œì¼, ìž‘ì—… ë‚´ìš©ì´ ìƒë‹¹ížˆ ìž‘ì€ê²½ìš° Git Message ë¥¼ í™œìš©í•˜ì—¬ ìž‘ì—… ê¸°ë¡ì„ ë‚¨ê¸´ë‹¤.
 
-- Commit ¸Þ¼¼Áö
+- Commit ë©”ì„¸ì§€
 
-  - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Type] : ³»¿ë</span>
-    - ex> [Fix]:Flower ¿ÀºêÁ§Æ® ¹èÄ¡½Ã À§Ä¡ ¾î±ß³ª´Â ¹ö±× ¼öÁ¤
+  - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Type] : ë‚´ìš©</span>
+    - ex> [Fix]:Flower ì˜¤ë¸Œì íŠ¸ ë°°ì¹˜ì‹œ ìœ„ì¹˜ ì–´ê¸‹ë‚˜ëŠ” ë²„ê·¸ ìˆ˜ì •
   - Type
 
-    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Feat]</span>: »õ·Î¿î ±â´É Ãß°¡
-    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Fix]</span>: ¹ö±× ¹× ±â´ÉÀÇ ¼öÁ¤
-    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Set]</span>: ÇÁ·ÎÁ§Æ® ¼³Á¤, À¯´ÏÆ¼ ÀÚÃ¼ ¼³Á¤
-    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Refactor]</span>: ±â´É¿¡ ¿µÇâÀ» ÁÖÁö ¾Ê´Â ¹üÀ§ÀÇ ÄÚµå ¼öÁ¤
-    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Test]</span>: Å×½ºÆ®¿¡ °ü·ÃµÈ ÀÛ¾÷
-    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Create]</span>: ÇÁ·ÎÁ§Æ®, ¾À, ½ºÅ©¸³Æ®, ¿ÀºêÁ§Æ®(ÇÁ¸®ÆÕ) »ý¼º
-    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Add]</span>: ¸®¼Ò½º ¹× ¿¡¼Â µî, ¿ÜÀûÀÎ ÆÄÀÏ Ãß°¡
+    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Feat]</span>: ìƒˆë¡œìš´ ê¸°ëŠ¥ ì¶”ê°€
+    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Fix]</span>: ë²„ê·¸ ë° ê¸°ëŠ¥ì˜ ìˆ˜ì •
+    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Set]</span>: í”„ë¡œì íŠ¸ ì„¤ì •, ìœ ë‹ˆí‹° ìžì²´ ì„¤ì •
+    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Refactor]</span>: ê¸°ëŠ¥ì— ì˜í–¥ì„ ì£¼ì§€ ì•ŠëŠ” ë²”ìœ„ì˜ ì½”ë“œ ìˆ˜ì •
+    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Test]</span>: í…ŒìŠ¤íŠ¸ì— ê´€ë ¨ëœ ìž‘ì—…
+    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Create]</span>: í”„ë¡œì íŠ¸, ì”¬, ìŠ¤í¬ë¦½íŠ¸, ì˜¤ë¸Œì íŠ¸(í”„ë¦¬íŒ¹) ìƒì„±
+    - <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">[Add]</span>: ë¦¬ì†ŒìŠ¤ ë° ì—ì…‹ ë“±, ì™¸ì ì¸ íŒŒì¼ ì¶”ê°€
 
-  - Å¸ÀÔ Á¾·ù¿¡ ±âÀçµÇÁö ¾ÊÀº ´Ü¼ø ÀÛ¾÷Àº Å¸ÀÔÀ» Á¤ÀÇÇÏÁö ¾Ê´Â´Ù.
+  - íƒ€ìž… ì¢…ë¥˜ì— ê¸°ìž¬ë˜ì§€ ì•Šì€ ë‹¨ìˆœ ìž‘ì—…ì€ íƒ€ìž…ì„ ì •ì˜í•˜ì§€ ì•ŠëŠ”ë‹¤.
 
-    - ex>`ºÒÇÊ¿ä ÆÄÀÏ Á¤¸®`
+    - ex>`ë¶ˆí•„ìš” íŒŒì¼ ì •ë¦¬`
 
       <br>
       <br>
       <br>
       <br>
-    <div style="background-color:#a3c2fe; color:black; padding:10px; font-size:25px; font-weight:bold; border-radius:8px;text-align:center;"> Code convention </div><br>
+      
+## ðŸš€ Code convention
 
-## °³¿ä
+### ê°œìš”
 
-- °³¹ß ÁøÇà °£ ÄÚµå ÀÛ¼º ¹× À¯Áöº¸¼ö¿¡ ÀÖ¾î ÅëÀÏ¼º À¯Áö·Î °¡µ¶¼º Çâ»ó, ÀÛ¾÷È¯°æÀÇ È¿À²¼ºÀ» ³ôÀÌ±â À§ÇÔ<br><br>
+- ê°œë°œ ì§„í–‰ ê°„ ì½”ë“œ ìž‘ì„± ë° ìœ ì§€ë³´ìˆ˜ì— ìžˆì–´ í†µì¼ì„± ìœ ì§€ë¡œ ê°€ë…ì„± í–¥ìƒ, ìž‘ì—…í™˜ê²½ì˜ íš¨ìœ¨ì„±ì„ ë†’ì´ê¸° ìœ„í•¨<br><br>
 
-## ±ÔÄ¢
+### ê·œì¹™
 
 ### `Naming`
 
-- ¾Ö¸ÅÇÑ º¯¼ö¸íÀº [º¯¼ö¸í Áþ±â »çÀÌÆ®](https://var.gg/ko#google_vignette) È°¿ë
-- ÄÚµå »ó¿¡¼­ ´Ü¾î »çÀÌ¿¡ ¶ç¾î¾²±â ¸ñÀûÀÇ ¾ð´õ¹Ù(\_)´Â »ç¿ëÇÏÁö ¾Ê´Â´Ù.<br><br>
+- ì• ë§¤í•œ ë³€ìˆ˜ëª…ì€ [ë³€ìˆ˜ëª… ì§“ê¸° ì‚¬ì´íŠ¸](https://var.gg/ko#google_vignette) í™œìš©
+- ì½”ë“œ ìƒì—ì„œ ë‹¨ì–´ ì‚¬ì´ì— ë„ì–´ì“°ê¸° ëª©ì ì˜ ì–¸ë”ë°”(\_)ëŠ” ì‚¬ìš©í•˜ì§€ ì•ŠëŠ”ë‹¤.<br><br>
 
-### `Å¬·¡½º ¹× ÆÄÀÏ ¸í`
+### `í´ëž˜ìŠ¤ ë° íŒŒì¼ ëª…`
 
-- ÆÄ½ºÄ® ÄÉÀÌ½º¸¦ Àû¿ë
-- ÇÁ¸®ÆÕ, ½ºÅ©¸³Æ® ¿Ü °°Àº Æ÷¸ËÀÇ ÆÄÀÏÀÌ ¿©·¯°³ÀÏ °æ¿ì ¿ëµµº°·Î Á¤·ÄÇÏ±â À§ÇØ <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Ç×¸ñ(type)*index*ÆÄÀÏ¸í(ÆÄ½ºÄ®ÄÉÀÌ½º)</span> ¸¦ Àû¿ëÇÑ´Ù.
+- íŒŒìŠ¤ì¹¼ ì¼€ì´ìŠ¤ë¥¼ ì ìš©
+- í”„ë¦¬íŒ¹, ìŠ¤í¬ë¦½íŠ¸ ì™¸ ê°™ì€ í¬ë§·ì˜ íŒŒì¼ì´ ì—¬ëŸ¬ê°œì¼ ê²½ìš° ìš©ë„ë³„ë¡œ ì •ë ¬í•˜ê¸° ìœ„í•´ <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">í•­ëª©(type)*index*íŒŒì¼ëª…(íŒŒìŠ¤ì¹¼ì¼€ì´ìŠ¤)</span> ë¥¼ ì ìš©í•œë‹¤.
 
 ```csharp
 ex >
@@ -103,37 +103,37 @@ CharacterMovement.cs
 
   <br>
 
-### `º¯¼ö`
+### `ë³€ìˆ˜`
 
-- <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">private</span> Àº ¾ð´õ¹Ù(\_) ÈÄ Ä«¸áÄÉÀÌ½º¸¦ Àû¿ë
-- <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">public</span> Àº ÆÄ½ºÄ® ÄÉÀÌ½º Àû¿ë
-  - ±âº»ÀûÀ¸·Î <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">public</span> º¯¼ö´Â »ç¿ëÇÏÁö ¾ÊÀ¸¸ç, »ç¿ë½Ã <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">ÇÁ·ÎÆÛÆ¼</span>·Î ¼±¾ð
-- bool Å¸ÀÔÀº »óÅÂ¸¦ ³ªÅ¸³»±â À§ÇØ <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Is</span> ¸¦ ºÙÀÎ´Ù.
-  - »óÅÂ¸¦ ÀúÀå/Ç¥±âÇÏ±â À§ÇÔÀÌ ¾Æ´Ñ °æ¿ì ºÙÀÌÁö ¾Ê¾Æµµ ¹«¹æ
-- º¯¼ö¸íÀÌ ±æ¾î ¾àÄªÀ» »ç¿ëÇÒ °æ¿ì ÁÖ¼®À» Ç¥±âÇÑ´Ù.
-- Å¸ÀÔÀ» Áï°¢ ¾Ë ¼ö ¾ø´Â °æ¿ì <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">var Å¸ÀÔÀº »ç¿ëÀ» Áö¾ç
-- »ó¼ö´Â ÀüºÎ ´ë¹®ÀÚ·Î Ç¥±â, ÇÊ¿äÇÑ°æ¿ì ¾ð´õ¹Ù¸¦ »ç¿ë
+- <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">private</span> ì€ ì–¸ë”ë°”(\_) í›„ ì¹´ë©œì¼€ì´ìŠ¤ë¥¼ ì ìš©
+- <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">public</span> ì€ íŒŒìŠ¤ì¹¼ ì¼€ì´ìŠ¤ ì ìš©
+  - ê¸°ë³¸ì ìœ¼ë¡œ <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">public</span> ë³€ìˆ˜ëŠ” ì‚¬ìš©í•˜ì§€ ì•Šìœ¼ë©°, ì‚¬ìš©ì‹œ <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">í”„ë¡œí¼í‹°</span>ë¡œ ì„ ì–¸
+- bool íƒ€ìž…ì€ ìƒíƒœë¥¼ ë‚˜íƒ€ë‚´ê¸° ìœ„í•´ <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">Is</span> ë¥¼ ë¶™ì¸ë‹¤.
+  - ìƒíƒœë¥¼ ì €ìž¥/í‘œê¸°í•˜ê¸° ìœ„í•¨ì´ ì•„ë‹Œ ê²½ìš° ë¶™ì´ì§€ ì•Šì•„ë„ ë¬´ë°©
+- ë³€ìˆ˜ëª…ì´ ê¸¸ì–´ ì•½ì¹­ì„ ì‚¬ìš©í•  ê²½ìš° ì£¼ì„ì„ í‘œê¸°í•œë‹¤.
+- íƒ€ìž…ì„ ì¦‰ê° ì•Œ ìˆ˜ ì—†ëŠ” ê²½ìš° <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">var íƒ€ìž…ì€ ì‚¬ìš©ì„ ì§€ì–‘
+- ìƒìˆ˜ëŠ” ì „ë¶€ ëŒ€ë¬¸ìžë¡œ í‘œê¸°, í•„ìš”í•œê²½ìš° ì–¸ë”ë°”ë¥¼ ì‚¬ìš©
 
 ```csharp
 public class Example
 {
-  // »ó¼ö ¼±¾ð
+  // ìƒìˆ˜ ì„ ì–¸
   private const int INIT_POOL_COUNT = 5;
 
-  // bool »óÅÂ
+  // bool ìƒíƒœ
   private bool _isGrounded;
 
-  // public º¯¼ö ¼±¾ð
+  // public ë³€ìˆ˜ ì„ ì–¸
   public bool IsAlive { get; private set; }
   public int EventStep { get; private set; }
 
-  // private º¯¼ö ¼±¾ð
+  // private ë³€ìˆ˜ ì„ ì–¸
   private float _maxHp;
   private GameObject _target;
 
   private void Foo()
   {
-		    // ÄÚµå »óÀ¸·Î Å¸ÀÔÀÌ ¹Ù·Î ÆÇ´ÜµÇÁö ¾Ê´Â °æ¿ì var »ç¿ëÀº Áö¾çÇÑ´Ù
+		    // ì½”ë“œ ìƒìœ¼ë¡œ íƒ€ìž…ì´ ë°”ë¡œ íŒë‹¨ë˜ì§€ ì•ŠëŠ” ê²½ìš° var ì‚¬ìš©ì€ ì§€ì–‘í•œë‹¤
       var hit = _target;
       var targetList = new List<GameObject>();
   }
@@ -142,14 +142,14 @@ public class Example
 
   <br>
 
-### `ÇÔ¼ö`
+### `í•¨ìˆ˜`
 
-- ÇÔ¼ö¸í : ÆÄ½ºÄ® ÄÉÀÌ½º, µ¿»çÇüÀ¸·Î ÀÛ¼ºÇÑ´Ù.
-- ¸Å°³º¯¼ö : Ä«¸áÄÉÀÌ½º¸¦ Àû¿ëÇÏµÇ ¸Å°³º¯¼öÀÓÀ» Ç¥±âÇÏ±â À§ÇØ m\_ Ç¥±â¸¦ ºÙÀÎ´Ù
-- ÇÔ¼ö ¸í ±âÁØÀÇ ±â´É ´ÜÀ§·Î ±â´É ¸ðµâÈ­
-- ÇÔ¼ö ³»¿¡¼­ ÇÑ ±â´ÉÀÇ ·ÎÁ÷ÀÌ ³¡³ª¸é °³ÇàÀ¸·Î ºÐ¸®
-- ÇÔ¼ö ÀÛ¼º ½Ã ±â´É Á¤º¸´Â <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">&lt;summary&gt;</span> ÁÖ¼®À» È°¿ëÇÑ´Ù
-- ÇÔ¼ö ¸íÀ¸·Î ÇÊ¿ä ÀÌ»óÀÇ ºÎ°¡¼³¸íÀº ÀÛ¼ºÇÏÁö ¾Ê´Â´Ù.
+- í•¨ìˆ˜ëª… : íŒŒìŠ¤ì¹¼ ì¼€ì´ìŠ¤, ë™ì‚¬í˜•ìœ¼ë¡œ ìž‘ì„±í•œë‹¤.
+- ë§¤ê°œë³€ìˆ˜ : ì¹´ë©œì¼€ì´ìŠ¤ë¥¼ ì ìš©í•˜ë˜ ë§¤ê°œë³€ìˆ˜ìž„ì„ í‘œê¸°í•˜ê¸° ìœ„í•´ m\_ í‘œê¸°ë¥¼ ë¶™ì¸ë‹¤
+- í•¨ìˆ˜ ëª… ê¸°ì¤€ì˜ ê¸°ëŠ¥ ë‹¨ìœ„ë¡œ ê¸°ëŠ¥ ëª¨ë“ˆí™”
+- í•¨ìˆ˜ ë‚´ì—ì„œ í•œ ê¸°ëŠ¥ì˜ ë¡œì§ì´ ëë‚˜ë©´ ê°œí–‰ìœ¼ë¡œ ë¶„ë¦¬
+- í•¨ìˆ˜ ìž‘ì„± ì‹œ ê¸°ëŠ¥ ì •ë³´ëŠ” <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">&lt;summary&gt;</span> ì£¼ì„ì„ í™œìš©í•œë‹¤
+- í•¨ìˆ˜ ëª…ìœ¼ë¡œ í•„ìš” ì´ìƒì˜ ë¶€ê°€ì„¤ëª…ì€ ìž‘ì„±í•˜ì§€ ì•ŠëŠ”ë‹¤.
 
 ```csharp
 ex>
@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
   }
 
   /// <summary>
-  /// ¾ÆÀÌÅÛ È¹µæ ¸Þ¼­µå
+  /// ì•„ì´í…œ íšë“ ë©”ì„œë“œ
   /// </summary>
   public void GetItem(Item m_item)
   {
@@ -169,23 +169,23 @@ public class Player : MonoBehaviour
 
   private void PlayerHpDown(float m_damage)
   {
-      // ÇÊ¿ä ÀÌ»óÀÇ ºÎ°¡¼³¸íÀÇ ¿¹½Ã
-      // Player Å¬·¡½º ³»¿¡¼­ Player¿¡°Ô ¿µÇâÀÌ °¡ÇØÁö´Â ±â´ÉÀÇ ÇÔ¼ö´Â
-      // 'Player'°¡ ºÙÁö ¾Ê¾Æµµ µÈ´Ù.
+      // í•„ìš” ì´ìƒì˜ ë¶€ê°€ì„¤ëª…ì˜ ì˜ˆì‹œ
+      // Player í´ëž˜ìŠ¤ ë‚´ì—ì„œ Playerì—ê²Œ ì˜í–¥ì´ ê°€í•´ì§€ëŠ” ê¸°ëŠ¥ì˜ í•¨ìˆ˜ëŠ”
+      // 'Player'ê°€ ë¶™ì§€ ì•Šì•„ë„ ëœë‹¤.
   }
 
   private void HpDown(float m_damage)
   {
-      // ¿ÇÀº ÇÔ¼ö¸í
+      // ì˜³ì€ í•¨ìˆ˜ëª…
   }
 }
 ```
 
   <br>
 
-### `ÀÎÅÍÆäÀÌ½º`
+### `ì¸í„°íŽ˜ì´ìŠ¤`
 
-- ÀÎÅÍÆäÀÌ½º ÀÛ¼º ½Ã ÀÌ¸§ ¾Õ¿¡ ¾ËÆÄºª ´ë¹®ÀÚ 'I'Ãß°¡
+- ì¸í„°íŽ˜ì´ìŠ¤ ìž‘ì„± ì‹œ ì´ë¦„ ì•žì— ì•ŒíŒŒë²³ ëŒ€ë¬¸ìž 'I'ì¶”ê°€
 
 ```csharp
 public Interface IAction{ ... }
@@ -195,10 +195,10 @@ public Interface IAction{ ... }
 
 ### `Enum`
 
-- Å¬·¡½º, ±¸Á¶Ã¼µé°ú È¥µ¿À» ¹æÁöÇÏ±â À§ÇØ ¿­°ÅÇü ¼±¾ð ÀÌÀ¯¸¦ ¸íÈ®È÷ ÀÛ¼ºÇÑ´Ù.
-- Å¬·¡½º¿ÍÀÇ ±¸ºÐÀ» À§ÇØ ¾Õ¿¡ 'E\_'¸¦ ºÙÀÎ´Ù.
-- Æ÷ÇÔµÇ´Â ¼Ó¼ºÀº Ç×»ó ÆÄ½ºÄ® ÄÉÀÌ½º·Î ÀÛ¼ºÇÑ´Ù.
-- ¼øÈ¸¸¦ À§ÇØ ¸¶Áö¸· ¼±¾ðÀº Size·Î Á¤ÀÇÇÑ´Ù.
+- í´ëž˜ìŠ¤, êµ¬ì¡°ì²´ë“¤ê³¼ í˜¼ë™ì„ ë°©ì§€í•˜ê¸° ìœ„í•´ ì—´ê±°í˜• ì„ ì–¸ ì´ìœ ë¥¼ ëª…í™•ížˆ ìž‘ì„±í•œë‹¤.
+- í´ëž˜ìŠ¤ì™€ì˜ êµ¬ë¶„ì„ ìœ„í•´ ì•žì— 'E\_'ë¥¼ ë¶™ì¸ë‹¤.
+- í¬í•¨ë˜ëŠ” ì†ì„±ì€ í•­ìƒ íŒŒìŠ¤ì¹¼ ì¼€ì´ìŠ¤ë¡œ ìž‘ì„±í•œë‹¤.
+- ìˆœíšŒë¥¼ ìœ„í•´ ë§ˆì§€ë§‰ ì„ ì–¸ì€ Sizeë¡œ ì •ì˜í•œë‹¤.
 
 ```csharp
 public enum E_StateType
@@ -214,12 +214,12 @@ public enum E_StateType
 
 ---
 
-### `[ÃÖÁ¾ µî·ÏÀÏÀÚ]`
+### `[ìµœì¢… ë“±ë¡ì¼ìž]`
 
-- 25³â 04¿ù 29ÀÏ / ÀÛ¼ºÀÚ : Àåµ¿Áø
+- 25ë…„ 04ì›” 29ì¼ / ìž‘ì„±ìž : ìž¥ë™ì§„
 
 <!--
-? ½ºÅ¸ÀÏ ÅÛÇÃ¸´
+? ìŠ¤íƒ€ì¼ í…œí”Œë¦¿
 <span style="color:#ff5c5c; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">public</span>
 <span style="color:#ff9c00; background-color:#2d2d2d; padding:2px 4px; border-radius:4px;">summary</span>
 -->
