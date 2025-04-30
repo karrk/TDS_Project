@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _limitVelocity: 1.2
   _accelPower: 7.5
-  _brakeVelocity: 0.2
+  _brakeVelocity: 0.16
 --- !u!70 &1489341061
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
