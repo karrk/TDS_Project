@@ -6,6 +6,7 @@ public class TruckController : MonoBehaviour
     [SerializeField] private float _limitVelocity;
     [SerializeField] private float _accelPower;
     [SerializeField] private float _brakeVelocity;
+    
 
     private Rigidbody2D _rb;
     private CapsuleCollider2D _coll;
