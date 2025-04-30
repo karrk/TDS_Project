@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class Monster : MonoBehaviour, IPooling
+public abstract class Monster : MonoBehaviour, IPooling, IDamageable
 {
     protected static E_MonsterType GetDetailType(Enum m_type)
     {
@@ -22,8 +22,8 @@ public abstract class Monster : MonoBehaviour, IPooling
 
     public abstract Enum Type { get; }
     public GameObject Obj => gameObject;
-    public bool IsDead => _hp < 1;
-    
+    public bool IsDead => _hp <= 0;
+
     /// <summary>
     /// 콜라이더의 중심점부터 바닥까지의 길이 값
     /// </summary>
@@ -118,6 +118,11 @@ public abstract class Monster : MonoBehaviour, IPooling
         }
     }
 
+    private void LiftBackMonster()
+    {
+
+    }
+
     /// <summary>
     /// 현재 지정된 값 데이터를 원본 데이터 값으로 설정합니다.
     /// </summary>
@@ -144,19 +149,6 @@ public abstract class Monster : MonoBehaviour, IPooling
     }
 
     /// <summary>
-    /// 데미지 값을 적용하며, 체력이 없을 시 사망 로직을 진행합니다.
-    /// </summary>
-    public void OnDamage(float m_value)
-    {
-        this._hp = Mathf.Clamp(_hp - m_value, 0, _hp - m_value);
-
-        if (IsDead == true)
-        {
-            StartCoroutine(DeadAction());
-        }
-    }
-
-    /// <summary>
     /// 몬스터 사망 시 죽음 로직을 수행합니다.
     /// </summary>
     private IEnumerator DeadAction()
@@ -173,4 +165,28 @@ public abstract class Monster : MonoBehaviour, IPooling
         Manager.Pool.Return(this);
     }
 
+    public bool OnDamage(float m_value)
+    {
+        this._hp = Mathf.Clamp(_hp - m_value, 0, _hp - m_value);
+
+        if (IsDead == true)
+        {
+            StartCoroutine(DeadAction());
+        }
+
+        return IsDead;
+    }
+
+    #region 디버깅
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Vector3 center = transform.position + (Vector3.right * (_coll.size.x / 2 + _coll.offset.x));
+        Vector2 size = new Vector2(_coll.size.x / 2, _coll.size.y * 1.5f);
+
+        Gizmos.DrawCube(center, size);
+    }
+
+    #endregion
 }
