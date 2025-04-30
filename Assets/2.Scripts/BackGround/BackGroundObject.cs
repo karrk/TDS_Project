@@ -32,6 +32,8 @@ public class BackGroundObject : MonoBehaviour
             coll.size = m_sizeInfo;
             newObj.transform.position =
                 new Vector2(transform.position.x, m_boundaryPoses[i] - m_sizeInfo.y/2);
+
+            coll.forceSendLayers = 1<<10+i;
         }
     }
 

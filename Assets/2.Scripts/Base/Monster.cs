@@ -23,17 +23,22 @@ public abstract class Monster : MonoBehaviour, IPooling
     public abstract Enum Type { get; }
     public GameObject Obj => gameObject;
     public bool IsDead => _hp < 1;
+    
+    /// <summary>
+    /// 콜라이더의 중심점부터 바닥까지의 길이 값
+    /// </summary>
+    public float PivotToBot => _coll.size.y/2 - _coll.offset.y;
 
     private bool IsOnRanged
     {
         get
         {
             _hitInfos = Physics2D.CircleCast(transform.position, _range, Vector2.up);
-            
-            if (_hitInfos.collider == null)
-                return false;
 
-            return true;
+            if (_hitInfos.collider.tag == "Player")
+                return true;
+
+            return false;
         }
     }
 
@@ -43,6 +48,7 @@ public abstract class Monster : MonoBehaviour, IPooling
 
     private RaycastHit2D _hitInfos;
     private Rigidbody2D _rb;
+    private CapsuleCollider2D _coll;
 
     private float _speed;
     private float _range;
@@ -53,12 +59,35 @@ public abstract class Monster : MonoBehaviour, IPooling
     protected virtual void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _coll = GetComponent<CapsuleCollider2D>();
+    }
+
+    /// <summary>
+    /// 몬스터 오브젝트의 충돌 레이어를 설정합니다.
+    /// 대상 바닥 콜라이더, 같은 경로 내 위치한 몬스터 콜라이더
+    /// </summary>
+    public void SetLayer(E_Way m_wayType)
+    {
+        switch (m_wayType)
+        {
+            case E_Way.Top:
+                this.gameObject.layer = 10;
+                break;
+            case E_Way.Mid:
+                this.gameObject.layer = 11;
+                break;
+            case E_Way.Bot:
+                this.gameObject.layer = 12;
+                break;
+        }
+
+        this._coll.forceSendLayers = 1 << 7 + gameObject.layer - 10 | 1 << 10 + gameObject.layer - 10;
     }
 
     /// <summary>
     /// 몬스터 스폰 후 모든 과정을 시작합니다.
     /// </summary>
-    protected virtual void LogicStart()
+    public virtual void LogicStart()
     {
         OverWriteData();
         StartCoroutine(MainLogic());
@@ -111,7 +140,7 @@ public abstract class Monster : MonoBehaviour, IPooling
     /// </summary>
     protected virtual void Move()
     {
-        _rb.velocity = Vector2.left * _speed;
+        _rb.velocity = new Vector2(-1 * _speed, _rb.velocity.y);
     }
 
     /// <summary>
