@@ -22,3 +22,23 @@ public enum E_MonsterType
 
     Size
 }
+
+public enum E_Bullet
+{
+    None = -1,
+    Basic = 0,
+
+    Size
+}
+
+/// <summary>
+/// 풀링 요소 타입
+/// </summary>
+public enum E_Pool
+{
+    None = -1,
+    Monster = 0,
+    Bullet,
+
+    Size
+}

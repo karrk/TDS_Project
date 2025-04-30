@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4894319172300455805}
   - component: {fileID: 348144477930633182}
   m_Layer: 0
-  m_Name: ZombieMelee
+  m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
