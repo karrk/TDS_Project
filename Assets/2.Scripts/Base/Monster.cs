@@ -23,6 +23,30 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
     public abstract Enum Type { get; }
     public GameObject Obj => gameObject;
     public bool IsDead => _hp <= 0;
+    private Vector2 LiftBoxSize => new Vector2(_coll.size.x/2, _coll.size.y/4);
+    private Vector3 LiftBoxCenter => 
+        transform.position + (Vector3.right * (_coll.size.x / 2 + _coll.offset.x + _liftBoxOffset.x)
+        + (Vector3.up * (_coll.size.y/2 + _liftBoxOffset.y)));
+    private bool _isLifting;
+    public bool IsLifting
+    {
+        get { return _isLifting; }
+        private set
+        {
+            _isLifting = value;
+
+            if (_isLifting == true)
+            {
+                StartCoroutine(StartLiftDelay());
+            }
+        }
+    }
+
+    private IEnumerator StartLiftDelay()
+    {
+        yield return new WaitForSeconds(UnityEngine.Random.Range(1.2f,2f));
+        _isLifting = false;
+    }
 
     /// <summary>
     /// 콜라이더의 중심점부터 바닥까지의 길이 값
@@ -49,6 +73,8 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
     private RaycastHit2D _hitInfos;
     private Rigidbody2D _rb;
     private CapsuleCollider2D _coll;
+    private Vector2 _liftBoxOffset = new Vector2(0, 0f);
+    [SerializeField] private float _liftPower;
 
     private float _speed;
     private float _range;
@@ -114,13 +140,35 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
                 Move();
             }
 
+            LiftBackMonster();
+
             yield return null;
         }
     }
 
     private void LiftBackMonster()
     {
+        FindBackMonster();
+    }
 
+    private void FindBackMonster()
+    {
+        RaycastHit2D[] objs = Physics2D.BoxCastAll(LiftBoxCenter, LiftBoxSize, 0, Vector2.up,0,1<<this.gameObject.layer);
+
+        foreach (var item in objs)
+        {
+            if (item.collider != _coll)
+            {
+                Monster mob = item.collider.GetComponent<Monster>();
+
+                if(mob.IsLifting == false)
+                {
+                    mob.IsLifting = true;
+                    item.collider.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 7f, ForceMode2D.Impulse);
+                }
+            }
+                
+        }
     }
 
     /// <summary>
@@ -182,10 +230,8 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Vector3 center = transform.position + (Vector3.right * (_coll.size.x / 2 + _coll.offset.x));
-        Vector2 size = new Vector2(_coll.size.x / 2, _coll.size.y * 1.5f);
 
-        Gizmos.DrawCube(center, size);
+        Gizmos.DrawCube(LiftBoxCenter, LiftBoxSize);
     }
 
     #endregion

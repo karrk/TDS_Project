@@ -46,7 +46,7 @@ public class LinkObjController : MonoBehaviour
                 {
                     if (tempNode == null) break; // 임시노드가 없다면 중단
 
-                    tempNode.Value.Fix(); // 대상 노드 오브젝트를 고정
+                    tempNode.Value.Drop(); // 대상 노드 오브젝트를 떨어지게
 
                     tempNode = tempNode.Next; // 다음 노드로 전환
                 }

@@ -19,6 +19,9 @@ public class BoxObject : MonoBehaviour, IDamageable
         return false;
     }
 
+    /// <summary>
+    /// 파괴 절차 과정을 수행합니다.
+    /// </summary>
     private IEnumerator StartDestroy()
     {
         // 애니메이션 동작
