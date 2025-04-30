@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff1e9b1db295484f95bde23501b5c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnCoolTime: 1
+  _spawnCoolTime: 1.5
 --- !u!1 &478636166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,7 +1747,7 @@ MonoBehaviour:
   _blockIdx: 0
   _centerWayPosY: -3.3
   _drawAllWays: 1
-  _wayInterval: 0.63
+  _wayInterval: 0.37
   _wayLayer:
     serializedVersion: 2
     m_Bits: 128
