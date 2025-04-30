@@ -32,6 +32,8 @@ public class ObjPool
             GameObject newObj = GameObject.Instantiate(_prefab);
             newObj.transform.SetParent(_dir);
             newObj.SetActive(false);
+
+            _pool.Add(newObj);
         }
     }
 
@@ -46,6 +48,7 @@ public class ObjPool
         }
 
         GameObject obj = _pool[_pool.Count - 1];
+        obj.SetActive(true);
         _pool.RemoveAt(_pool.Count - 1);
         return obj;
     }
