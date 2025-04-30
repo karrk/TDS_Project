@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 1489341059}
   - component: {fileID: 1489341060}
   - component: {fileID: 1489341062}
-  - component: {fileID: 1489341061}
+  - component: {fileID: 1489341063}
   m_Layer: 8
   m_Name: Truck
   m_TagString: Player
@@ -1225,11 +1225,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6cf2a47a53dabf418d361c73772e04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _limitVelocity: 2.5
-  _accelPower: 1.5
-  _brakeVelocity: 0.13
---- !u!70 &1489341061
-CapsuleCollider2D:
+  _limitVelocity: 3
+  _accelPower: 1.2
+  _brakeVelocity: 0.1
+--- !u!50 &1489341062
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489341058}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 20
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: d8dba0ea762db904797f35cd87e183ca, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &1489341063
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1260,36 +1287,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23229085, y: -1.0999583}
-  m_Size: {x: 1.8881773, y: 0.57641774}
-  m_Direction: 1
---- !u!50 &1489341062
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489341058}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 20
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: d8dba0ea762db904797f35cd87e183ca, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Offset: {x: -0.25203276, y: -1.0957943}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9774485, y: 0.57921505}
+  m_EdgeRadius: 0
 --- !u!1001 &1544987788
 PrefabInstance:
   m_ObjectHideFlags: 0
