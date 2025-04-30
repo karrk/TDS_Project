@@ -4,23 +4,51 @@ using UnityEngine;
 public class FixedObject : MonoBehaviour
 {
     private float _fixedLocalPosX;
-    private float _fixDuration = 1f;
+    private Rigidbody2D _rb;
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
         _fixedLocalPosX = transform.localPosition.x;
+
+        Fix();
     }
 
     /// <summary>
-    /// 오브젝트가 떨어지는 동안 물체의 위치를 보정합니다.
+    /// 해당 오브젝트의 로컬 좌표 X축을 고정시킵니다.
     /// </summary>
     public void Fix()
+    {
+        StartCoroutine(StartFix());
+    }
+
+    /// <summary>
+    /// 물체가 중력의 영향을 받을 수 있게 설정합니다.
+    /// </summary>
+    public void Drop()
     {
         if (isActiveAndEnabled == false)
             return;
 
-        StopCoroutine(StartFix());
-        StartCoroutine(StartFix());
+        _rb.isKinematic = false;
+
+        StopCoroutine(ConvertKinetic());
+        StartCoroutine(ConvertKinetic());
+    }
+
+    /// <summary>
+    /// N 초 뒤 다시 Kinetic Mode 로 전환합니다.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator ConvertKinetic()
+    {
+        yield return new WaitForSeconds(1f);
+
+        _rb.isKinematic = true;
     }
 
     /// <summary>
@@ -28,17 +56,10 @@ public class FixedObject : MonoBehaviour
     /// </summary>
     private IEnumerator StartFix()
     {
-        float time = _fixDuration;
-
         while (true)
         {
-            if (_fixDuration <= 0)
-                break;
-
             transform.localPosition = new Vector2(_fixedLocalPosX, transform.localPosition.y);
-
             yield return null;
-            _fixDuration -= Time.deltaTime;
         }
     }
 
@@ -47,9 +68,10 @@ public class FixedObject : MonoBehaviour
     /// </summary>
     private void OnDestroy()
     {
-        if(this.transform.parent.TryGetComponent<LinkObjController>(out LinkObjController controller))
+        if (transform.parent.TryGetComponent<LinkObjController>(out LinkObjController controller))
         {
             controller.SendDestroySignal(this);
         }
+        StopAllCoroutines();
     }
 }
