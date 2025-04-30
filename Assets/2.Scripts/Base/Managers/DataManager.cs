@@ -1,8 +1,11 @@
 using UnityEngine;
+using System;
 
+[Serializable]
 public class DataManager
 {
     private float[] _groundTopEdges;
+    [SerializeField] private MonsterData[] _monsterDatas;
 
     public DataManager()
     {
@@ -14,9 +17,23 @@ public class DataManager
     /// </summary>
     public void RegistWayPos(E_Way m_wayType, float m_posY)
     {
-        Debug.Log($"{m_wayType} {m_posY}");
+        //Debug.Log($"{m_wayType} {m_posY}");
 
         _groundTopEdges[(int)m_wayType] = m_posY;
+    }
+
+    /// <summary>
+    /// 지정한 타입의 몬스터 데이터를 반환합니다.
+    /// </summary>
+    public MonsterData GetMonsterData(E_MonsterType m_type)
+    {
+        foreach (var data in _monsterDatas)
+        {
+            if (data.Type == m_type)
+                return data;
+        }
+
+        throw new Exception("찾는 몬스터 데이터가 없습니다.");
     }
 
     /// <summary>
