@@ -9,7 +9,8 @@ public class Manager : MonoBehaviour
     public static Transform Dir => _instance.transform;
 
     public static InitManager Init { get; } = new InitManager();
-    public static DataManager Data { get; } = new DataManager();
+    public static DataManager Data { get; private set; }
+    [SerializeField] private DataManager _data;
 
     public static PoolManager Pool { get; private set; }
     [SerializeField] private PoolManager _pool;
@@ -33,6 +34,8 @@ public class Manager : MonoBehaviour
     {
         Pool = _pool;
         _pool.Init();
+
+        Data = _data;
     }
 
     /// <summary>

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e687a739c1ed07c4c8e4cfa41294328f, type: 3}
   m_Name: RangeMobData
   m_EditorClassIdentifier: 
+  _type: 1
   _moveSpeed: 0.5
   _atkRange: 3
   _hp: 40

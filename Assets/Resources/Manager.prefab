@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c5fdd32db59594eaf646a8a05eb089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data:
+    _monsterDatas:
+    - {fileID: 11400000, guid: 388370557b0491e4db24c37e17b4caea, type: 2}
+    - {fileID: 11400000, guid: f38fe527bce2d0c419f23122f02d6a9d, type: 2}
   _pool:
     _monsterPrefabs:
     - {fileID: 11400000, guid: 4c5d072183c986f4ca3faf6979cf38ea, type: 2}
