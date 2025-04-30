@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public class DataManager
 {
     private float[] _groundTopEdges;
@@ -14,7 +15,7 @@ public class DataManager
     /// </summary>
     public void RegistWayPos(E_Way m_wayType, float m_posY)
     {
-        Debug.Log($"{m_wayType} {m_posY}");
+        //Debug.Log($"{m_wayType} {m_posY}");
 
         _groundTopEdges[(int)m_wayType] = m_posY;
     }
