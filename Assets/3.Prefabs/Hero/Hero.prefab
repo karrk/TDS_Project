@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 5553701705260486736}
   - component: {fileID: 6718594211823800976}
   - component: {fileID: -8306448381971623155}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,4 +256,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4557e4a06176124b92f617472be03b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upperObj: {fileID: 0}

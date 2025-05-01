@@ -23,10 +23,13 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
     public abstract Enum Type { get; }
     public GameObject Obj => gameObject;
     public bool IsDead => _hp <= 0;
+    public float Power => _power;
     private Vector2 LiftBoxSize => new Vector2(_coll.size.x/2, _coll.size.y/4);
     private Vector3 LiftBoxCenter => 
         transform.position + (Vector3.right * (_coll.size.x / 2 + _coll.offset.x + _liftBoxOffset.x)
         + (Vector3.up * (_coll.size.y/2 + _liftBoxOffset.y)));
+
+
     private bool _isLifting;
     public bool IsLifting
     {
@@ -37,15 +40,24 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
 
             if (_isLifting == true)
             {
-                StartCoroutine(StartLiftDelay());
+                StartCoroutine(AutoStateReset(UnityEngine.Random.Range(1.2f, 2),()=>_isLifting = false));
             }
         }
     }
 
-    private IEnumerator StartLiftDelay()
+    private bool _isAttacked;
+    public bool IsAttacked
     {
-        yield return new WaitForSeconds(UnityEngine.Random.Range(1.2f,2f));
-        _isLifting = false;
+        get { return _isAttacked; }
+        set
+        {
+            _isAttacked = value;
+
+            if (_isAttacked == true)
+            {
+                StartCoroutine(AutoStateReset(_atkCool, () => _isAttacked = false));
+            }
+        }
     }
 
     /// <summary>
@@ -53,32 +65,47 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
     /// </summary>
     public float PivotToBot => _coll.size.y/2 - _coll.offset.y;
 
+    /// <summary>
+    /// 범위 내 감지해야 할 대상이 있는지의 여부
+    /// </summary>
     private bool IsOnRanged
     {
         get
         {
-            _hitInfos = Physics2D.CircleCast(transform.position, _range, Vector2.up);
+            _target = Physics2D.OverlapCircle(transform.position + Vector3.up * _coll.size.y/2, _range, 1<<3);
 
-            if (_hitInfos.collider.tag == "Player")
-                return true;
+            if (_target != null)
+            {
+                if (_target.tag == "Player" || _target.tag == "Hero")
+                    return true;
+            }
 
             return false;
         }
     }
 
+    public Collider2D Target => _target;
+
     #endregion
 
     #region 변수
 
-    private RaycastHit2D _hitInfos;
+    [SerializeField] private bool _drawBackCast;
+    [SerializeField] private bool _drawRangeArea;
+    private Collider2D _target;
     private Rigidbody2D _rb;
     private CapsuleCollider2D _coll;
     private Vector2 _liftBoxOffset = new Vector2(0, 0f);
-    [SerializeField] private float _liftPower;
+    [SerializeField,Header("우측 몬스터를 띄워 올리는 힘")] private float _liftPower;
+    protected Animator _anim;
 
+    protected float _power;
+    private float _atkCool;
     private float _speed;
     private float _range;
     private float _hp;
+
+    // TODO : 레이 감지 변수명이 불분명함 재 정리 필요
 
     #endregion
 
@@ -86,6 +113,7 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
     {
         _rb = GetComponent<Rigidbody2D>();
         _coll = GetComponent<CapsuleCollider2D>();
+        _anim = GetComponent<Animator>();
     }
 
     /// <summary>
@@ -131,27 +159,41 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
             if (IsDead == true)
                 break;
 
-            if (IsOnRanged == true)
+            if (IsOnRanged == true && IsAttacked == false)
             {
                 Attack();
-            }
-            else
-            {
-                Move();
+                IsAttacked = true;
             }
 
+            Move();
             LiftBackMonster();
 
             yield return null;
         }
     }
 
+    /// <summary>
+    /// 뒤쪽 몬스터가 있을경우 대상을 위쪽으로 띄워올립니다.
+    /// </summary>
     private void LiftBackMonster()
     {
-        FindBackMonster();
+        Monster mob = FindBackMonster();
+
+        if (mob == null)
+            return;
+
+        if (mob.IsLifting == true)
+            return;
+
+        mob.IsLifting = true;
+        mob.GetComponent<Rigidbody2D>().AddForce(Vector3.up * _liftPower, ForceMode2D.Impulse);
+
     }
 
-    private void FindBackMonster()
+    /// <summary>
+    /// 자신의 뒤쪽(vec3.Right)에 다른 몬스터를 찾아 반환합니다.
+    /// </summary>
+    private Monster FindBackMonster()
     {
         RaycastHit2D[] objs = Physics2D.BoxCastAll(LiftBoxCenter, LiftBoxSize, 0, Vector2.up,0,1<<this.gameObject.layer);
 
@@ -159,16 +201,14 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
         {
             if (item.collider != _coll)
             {
-                Monster mob = item.collider.GetComponent<Monster>();
-
-                if(mob.IsLifting == false)
+                if (item.collider.TryGetComponent<Monster>(out Monster mob))
                 {
-                    mob.IsLifting = true;
-                    item.collider.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 7f, ForceMode2D.Impulse);
+                    return mob;
                 }
             }
-                
         }
+
+        return null;
     }
 
     /// <summary>
@@ -178,15 +218,17 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
     {
         MonsterData m_data = Manager.Data.GetMonsterData(GetDetailType(Type));
 
+        this._atkCool = m_data.AtkCool;
         this._speed = m_data.MoveSpeed;
         this._range = m_data.AtkRange;
         this._hp = m_data.HP;
+        this._power = m_data.Power;
     }
 
     /// <summary>
     /// 몬스터의 공격을 동작합니다.
     /// </summary>
-    protected virtual void Attack() { }
+    protected virtual void Attack() {  }
 
     /// <summary>
     /// 몬스터의 이동을 동작합니다.
@@ -203,6 +245,18 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
     {
         yield return null;
         Return();
+    }
+
+    /// <summary>
+    /// 대상 시간 이후, 상태를 다시 
+    /// </summary>
+    /// <param name="m_delay"></param>
+    /// <param name="m_state"></param>
+    /// <returns></returns>
+    private IEnumerator AutoStateReset(float m_delay,Action m_stateChange)
+    {
+        yield return new WaitForSeconds(m_delay);
+        m_stateChange?.Invoke();
     }
 
     /// <summary>
@@ -229,9 +283,21 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        // 후방 다른 몬스터 감지범위 디버깅
+        if (_drawBackCast == true)
+        {
+            Gizmos.color = Color.green;
 
-        Gizmos.DrawCube(LiftBoxCenter, LiftBoxSize);
+            Gizmos.DrawWireCube(LiftBoxCenter, LiftBoxSize);
+        }
+        
+        // 공격 대상 오브젝트 감지범위 디버깅
+        if (_drawRangeArea == true)
+        {
+            Gizmos.color = Color.yellow;
+
+            Gizmos.DrawWireSphere(transform.position + Vector3.up * _coll.size.y / 2, _range);
+        }
     }
 
     #endregion

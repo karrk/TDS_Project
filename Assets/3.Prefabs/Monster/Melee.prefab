@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4894319172300455805}
   - component: {fileID: 348144477930633182}
   - component: {fileID: -607105615043719854}
+  - component: {fileID: -1370675662468033959}
   m_Layer: 10
   m_Name: Melee
   m_TagString: Untagged
@@ -131,7 +132,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0493c35a3150b4c4b899e8c8130a60b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _liftPower: 21
+  _drawBackCast: 0
+  _drawRangeArea: 1
+  _liftPower: 7
+--- !u!114 &-1370675662468033959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319310827380095937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fffce3abafa617641aadb9e3c5899061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2094693183665648150
 GameObject:
   m_ObjectHideFlags: 0
