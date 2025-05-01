@@ -6,6 +6,7 @@ public class DataManager
 {
     private float[] _groundTopEdges;
     [SerializeField] private MonsterData[] _monsterDatas;
+    [SerializeField] private BulletData[] _bulletDatas;
 
     public DataManager()
     {
@@ -34,6 +35,20 @@ public class DataManager
         }
 
         throw new Exception("찾는 몬스터 데이터가 없습니다.");
+    }
+
+    /// <summary>
+    /// 지정한 타입의 총알 데이터를 반환합니다.
+    /// </summary>
+    public BulletData GetBulletData(E_Bullet m_type)
+    {
+        foreach (var data in _bulletDatas)
+        {
+            if (data.Type == m_type)
+                return data;
+        }
+
+        throw new Exception("찾는 총알 데이터가 없습니다.");
     }
 
     /// <summary>

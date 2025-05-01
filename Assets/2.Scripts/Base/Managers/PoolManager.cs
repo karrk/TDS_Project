@@ -12,6 +12,8 @@ public class PoolManager
     };
 
     [SerializeField] private MonsterPrefab[] _monsterPrefabs;
+    [SerializeField] private BulletPrefab[] _bulletPrefabs;
+
     private Dictionary<E_MonsterType, ObjPool> _monsterPool;
     private Dictionary<E_Bullet, ObjPool> _bulletPool;
 
@@ -42,7 +44,10 @@ public class PoolManager
     private void CreatePools()
     {
         _monsterPool = new Dictionary<E_MonsterType, ObjPool>();
+        _bulletPool = new Dictionary<E_Bullet, ObjPool>();
+
         CreateMonsterPools();
+        CreateBulletPools();
     }
 
     /// <summary>
@@ -57,6 +62,21 @@ public class PoolManager
 
             ObjPool pool = new ObjPool(_monsterPrefabs[i].Prefab, newDir);
             _monsterPool.Add(_monsterPrefabs[i].Type, pool);
+        }
+    }
+
+    /// <summary>
+    /// 총알 풀 생성 : 등록된 프리팹 수만큼 초기화를 진행합니다.
+    /// </summary>
+    private void CreateBulletPools()
+    {
+        for (int i = 0; i < _bulletPrefabs.Length; i++)
+        {
+            Transform newDir = new GameObject($"{_bulletPrefabs[i].Type} Pool").transform;
+            newDir.SetParent(MainDir);
+
+            ObjPool pool = new ObjPool(_bulletPrefabs[i].Prefab, newDir);
+            _bulletPool.Add(_bulletPrefabs[i].Type, pool);
         }
     }
 
@@ -115,6 +135,7 @@ public class PoolManager
         if (_typeToPool.TryGetValue(m_obj.Type.GetType(), out E_Pool poolType))
         {
             FindPool(m_obj.Type, poolType).Return(m_obj);
+            return;
         }
 
         throw new Exception("반환할 수 없는 타입입니다.");
