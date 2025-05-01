@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Text.RegularExpressions;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -95,9 +94,11 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
 
     #region 변수
 
+    [SerializeField] private Transform _textPivot;
     private SpriteRenderer[] _renderers;
     [SerializeField] private bool _drawBackCast;
     [SerializeField] private bool _drawRangeArea;
+    private HPBarController _hpBar;
     private Collider2D _target;
     private Rigidbody2D _rb;
     private CapsuleCollider2D _coll;
@@ -110,6 +111,7 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
     private float _speed;
     private float _range;
     private float _hp;
+    private float _maxHP;
 
     // TODO : 레이 감지 변수명이 불분명함 재 정리 필요
 
@@ -121,6 +123,7 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
         _rb = GetComponent<Rigidbody2D>();
         _coll = GetComponent<CapsuleCollider2D>();
         _anim = GetComponent<Animator>();
+        _hpBar = GetComponentInChildren<HPBarController>(true);
     }
 
     private void OnDisable()
@@ -260,13 +263,14 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
     /// </summary>
     protected void OverWriteData()
     {
-        MonsterData m_data = Manager.Data.GetMonsterData(GetDetailType(Type));
+        MonsterData data = Manager.Data.GetMonsterData(GetDetailType(Type));
 
-        this._atkCool = m_data.AtkCool;
-        this._speed = m_data.MoveSpeed;
-        this._range = m_data.AtkRange;
-        this._hp = m_data.HP;
-        this._power = m_data.Power;
+        this._atkCool = data.AtkCool;
+        this._speed = data.MoveSpeed;
+        this._range = data.AtkRange;
+        this._hp = data.HP;
+        this._maxHP = data.HP;
+        this._power = data.Power;
     }
 
     /// <summary>
@@ -314,12 +318,23 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
 
         this._hp = Mathf.Clamp(_hp - m_value, 0, _hp - m_value);
 
+        
+
         if (IsDead == true)
         {
+            _hpBar.gameObject.SetActive(false);
             Dead();
         }
         else
         {
+            DamageText text = Manager.Pool.Get<DamageText>(E_Text.Damage);
+            text.SetText(m_value.ToString());
+            text.SetPosition(_textPivot);
+
+            if (_hpBar.isActiveAndEnabled == false) { _hpBar.gameObject.SetActive(true); }
+
+            _hpBar.SetHpBarGauge(_maxHP, _hp);
+
             for (int i = 0; i < _renderers.Length; i++)
             {
                 Utils.DamageColorChange(this, _renderers[i], Color.white);

@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2832ddd48cf2bc42a886f9eb5d84ab5, type: 3}
-  m_Name: BulletData
+  m_Script: {fileID: 11500000, guid: f0ca5874598140b40afad198a5a8db2a, type: 3}
+  m_Name: UIPrefab
   m_EditorClassIdentifier: 
+  _prefab: {fileID: 6815176876609524915, guid: c465a17a844089d47b421e3b3069ec51, type: 3}
   _type: 0
-  _moveSpeed: 100
-  _power: 8
-  _bulletCount: 7
-  _spreadAngle: 40
