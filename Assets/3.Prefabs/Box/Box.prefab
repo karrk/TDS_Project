@@ -421,9 +421,9 @@ GameObject:
   - component: {fileID: 6522315550765019297}
   - component: {fileID: 3175506883567667195}
   - component: {fileID: 3099398628568511036}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Box
-  m_TagString: Hero
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

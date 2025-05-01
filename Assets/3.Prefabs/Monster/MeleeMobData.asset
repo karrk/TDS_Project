@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e687a739c1ed07c4c8e4cfa41294328f, type: 3}
   m_Name: MeleeMobData
   m_EditorClassIdentifier: 
+  _type: 0
   _moveSpeed: 1
   _atkRange: 1
   _hp: 100
+  _atkCool: 1.5
