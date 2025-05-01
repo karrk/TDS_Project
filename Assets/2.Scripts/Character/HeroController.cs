@@ -23,19 +23,14 @@ public class HeroController : InitBehaviour, IDamageable
         _renderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Start()
-    {
-        //_gun.SetBullet(E_Bullet.BasicBullet);
-        //StartCoroutine(StartShooting());
-    }
-
     public bool OnDamage(float m_value)
     {
         _hp = Mathf.Clamp(_hp - m_value, 0, float.MaxValue);
 
         if (_hp <= 0)
         {
-            //StartCoroutine(StartDestroy());
+            GetComponentInParent<TruckController>().SetActiveWall(false);
+            Destroy(this.gameObject);
         }
         else
         {

@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff1e9b1db295484f95bde23501b5c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnCoolTime: 3
+  _spawnCoolTime: 1.5
 --- !u!1 &478636166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,9 +1187,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1489341059}
   - component: {fileID: 1489341060}
-  - component: {fileID: 1489341062}
   - component: {fileID: 1489341064}
+  - component: {fileID: 1489341062}
   - component: {fileID: 1489341065}
+  - component: {fileID: 1489341066}
   m_Layer: 8
   m_Name: Truck
   m_TagString: Untagged
@@ -1227,7 +1228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _limitVelocity: 4
-  _accelPower: 4
+  _accelPower: 2
   _brakeVelocity: 0
 --- !u!50 &1489341062
 Rigidbody2D:
@@ -1309,6 +1310,51 @@ CapsuleCollider2D:
   m_Offset: {x: -0.43539566, y: -1.0958791}
   m_Size: {x: 1.927778, y: 0.5718525}
   m_Direction: 1
+--- !u!61 &1489341066
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489341058}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d8dba0ea762db904797f35cd87e183ca, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.7432884, y: 4.042882}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.07143235, y: 10.582073}
+  m_EdgeRadius: 0
 --- !u!1001 &1544987788
 PrefabInstance:
   m_ObjectHideFlags: 0
