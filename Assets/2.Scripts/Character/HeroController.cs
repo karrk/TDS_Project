@@ -1,7 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
-public class BoxObject : MonoBehaviour, IDamageable
+public class HeroController : MonoBehaviour, IDamageable
 {
     private SpriteRenderer _renderer;
     [SerializeField] private float _hp;
@@ -9,7 +8,7 @@ public class BoxObject : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        _renderer = GetComponentInChildren<SpriteRenderer>();
+        _renderer = GetComponent<SpriteRenderer>();
     }
 
     public bool OnDamage(float m_value)
@@ -18,7 +17,7 @@ public class BoxObject : MonoBehaviour, IDamageable
 
         if (_hp <= 0)
         {
-            StartCoroutine(StartDestroy());
+            //StartCoroutine(StartDestroy());
             return true;
         }
         else
@@ -27,18 +26,5 @@ public class BoxObject : MonoBehaviour, IDamageable
         }
 
         return false;
-    }
-
-    /// <summary>
-    /// 파괴 절차 과정을 수행합니다.
-    /// </summary>
-    private IEnumerator StartDestroy()
-    {
-        // 애니메이션 동작
-
-        // 동작 후
-        yield return null;
-
-        Destroy(this.gameObject);
     }
 }

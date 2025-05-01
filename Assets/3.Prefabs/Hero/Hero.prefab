@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5553701705260486736}
   - component: {fileID: 6718594211823800976}
   - component: {fileID: -8306448381971623155}
+  - component: {fileID: -8454832360757677791}
   m_Layer: 3
   m_Name: Hero
   m_TagString: Hero
@@ -225,7 +226,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8958240697474582917}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -254,5 +255,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4557e4a06176124b92f617472be03b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8454832360757677791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958240697474582917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81dcd9fbcdc30fa4db774480c140c2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
