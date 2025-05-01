@@ -23,10 +23,24 @@ public enum E_MonsterType
     Size
 }
 
+/// <summary>
+/// 총알 타입
+/// </summary>
 public enum E_Bullet
 {
     None = -1,
     BasicBullet = 0,
+
+    Size
+}
+
+/// <summary>
+/// UI 텍스트
+/// </summary>
+public enum E_Text
+{
+    None = -1,
+    Damage = 0,
 
     Size
 }
@@ -39,6 +53,9 @@ public enum E_Pool
     None = -1,
     Monster = 0,
     Bullet,
+    Text,
 
     Size
 }
+
+

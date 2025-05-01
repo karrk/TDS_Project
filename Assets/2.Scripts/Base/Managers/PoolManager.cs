@@ -8,14 +8,17 @@ public class PoolManager
     private readonly Dictionary<Type, E_Pool> _typeToPool = new()
     {
         { typeof(E_MonsterType), E_Pool.Monster },
-        { typeof(E_Bullet), E_Pool.Bullet }
+        { typeof(E_Bullet), E_Pool.Bullet },
+        { typeof(E_Text), E_Pool.Text }
     };
 
     [SerializeField] private MonsterPrefab[] _monsterPrefabs;
     [SerializeField] private BulletPrefab[] _bulletPrefabs;
+    [SerializeField] private UIPrefab[] _uiPrefabs;
 
     private Dictionary<E_MonsterType, ObjPool> _monsterPool;
     private Dictionary<E_Bullet, ObjPool> _bulletPool;
+    private Dictionary<E_Text, ObjPool> _uiPool;
 
     // 오브젝트 형태만 만들고,
     // 데이터 매니저에서 SO 를 불러온다.
@@ -45,9 +48,11 @@ public class PoolManager
     {
         _monsterPool = new Dictionary<E_MonsterType, ObjPool>();
         _bulletPool = new Dictionary<E_Bullet, ObjPool>();
+        _uiPool = new Dictionary<E_Text, ObjPool>();
 
         CreateMonsterPools();
         CreateBulletPools();
+        CreateUIPools();
     }
 
     /// <summary>
@@ -77,6 +82,21 @@ public class PoolManager
 
             ObjPool pool = new ObjPool(_bulletPrefabs[i].Prefab, newDir);
             _bulletPool.Add(_bulletPrefabs[i].Type, pool);
+        }
+    }
+
+    /// <summary>
+    /// 총알 풀 생성 : 등록된 프리팹 수만큼 초기화를 진행합니다.
+    /// </summary>
+    private void CreateUIPools()
+    {
+        for (int i = 0; i < _uiPrefabs.Length; i++)
+        {
+            Transform newDir = new GameObject($"{_uiPrefabs[i].Type} Pool").transform;
+            newDir.SetParent(MainDir);
+
+            ObjPool pool = new ObjPool(_uiPrefabs[i].Prefab, newDir);
+            _uiPool.Add(_uiPrefabs[i].Type, pool);
         }
     }
 
@@ -121,6 +141,11 @@ public class PoolManager
             case E_Pool.Bullet:
                 if (_bulletPool.TryGetValue((E_Bullet)m_type, out ObjPool bulletPool))
                 { return bulletPool; }
+                break;
+
+            case E_Pool.Text:
+                if (_uiPool.TryGetValue((E_Text)m_type, out ObjPool uiPool))
+                { return uiPool; }
                 break;
         }
 

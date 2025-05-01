@@ -56,3 +56,5 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ee7c85466a332104589a8c86bfad9d58, type: 2}
     _bulletPrefabs:
     - {fileID: 11400000, guid: 90c47d704ea63ec4cbcd392dfe2d8201, type: 2}
+    _uiPrefabs:
+    - {fileID: 11400000, guid: d4df4908dc8a97f44a04c6ee51bf4f1a, type: 2}
