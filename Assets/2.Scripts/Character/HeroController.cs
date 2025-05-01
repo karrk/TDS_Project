@@ -14,6 +14,7 @@ public class HeroController : InitBehaviour, IDamageable
     public bool IsDead => _hp <= 0;
 
     public override int InitOrder => 1;
+    private Vector3 shootPos;
 
     protected override void Awake()
     {
@@ -21,6 +22,41 @@ public class HeroController : InitBehaviour, IDamageable
         _gun = GetComponentInChildren<Gun>();
         _finder = GetComponentInParent<TargetFinder>();
         _renderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        Manager.Input.OnInputClick += UseControl;
+        Manager.Input.OnInputClickUp += StopControl;
+    }
+
+    private void OnDisable()
+    {
+        Manager.Input.OnInputClick -= UseControl;
+        Manager.Input.OnInputClickUp -= StopControl;
+    }
+
+    /// <summary>
+    /// 유저의 조작을 진행
+    /// 마우스 입력 위치로 총구의 방향을 결정합니다. 
+    /// </summary>
+    private void UseControl(Vector2 m_inputPos)
+    {
+        Vector3 screenPos = new Vector3(m_inputPos.x, m_inputPos.y, 10);
+        shootPos = Camera.main.ScreenToWorldPoint(screenPos);
+
+        _isUserControlling = true;
+        _gun.transform.LookAt(shootPos);
+        _gun.ShowAimArea(shootPos);
+    }
+
+    /// <summary>
+    /// 유저의 조작을 중단합니다.
+    /// </summary>
+    private void StopControl()
+    {
+        _gun.HideAimArea();
+        _isUserControlling = false;
     }
 
     public bool OnDamage(float m_value)
@@ -46,7 +82,6 @@ public class HeroController : InitBehaviour, IDamageable
     private IEnumerator StartShooting()
     {
         float timer = 0;
-        Vector3 targetPos;
 
         while (true)
         {
@@ -55,15 +90,15 @@ public class HeroController : InitBehaviour, IDamageable
 
             if(_isShootable == true)
             {
-                targetPos = _finder.GetTargetPos();
+                if(_isUserControlling == false)
+                    shootPos = _finder.GetTargetPos();
 
-                if(targetPos != Vector3.back) 
+                if(shootPos != Vector3.back) 
                 {
-                    _gun.SetLookTarget(targetPos);
+                    _gun.SetLookTarget(shootPos);
                     _gun.Fire(E_Bullet.BasicBullet);
                     timer = _shootingCool;
                     _isShootable = false;
-                    targetPos = Vector3.back;
                 }
             }
             else

@@ -90,8 +90,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.12935746, y: 0.4910456}
-  m_Size: {x: 0.7402353, y: 1.1874654}
+  m_Offset: {x: -0.09787321, y: 0.31309104}
+  m_Size: {x: 0.54585433, y: 0.8041792}
   m_Direction: 0
 --- !u!50 &348144477930633182
 Rigidbody2D:
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drawBackCast: 0
-  _drawRangeArea: 1
+  _drawRangeArea: 0
   _liftPower: 3
 --- !u!114 &-1370675662468033959
 MonoBehaviour:
