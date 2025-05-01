@@ -206,10 +206,21 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
     }
 
     /// <summary>
+    /// 뒤쪽 몬스터가 위로 올라가도 되는지 확인하는 기능입니다.
+    /// </summary>
+    private bool LiftCheck()
+    {
+        return transform.position.y + _coll.size.y * 2 <= Manager.Data.HeroPos.y;
+    }
+
+    /// <summary>
     /// 뒤쪽 몬스터가 있을경우 대상을 위쪽으로 띄워올립니다.
     /// </summary>
     private void LiftBackMonster()
     {
+        if (LiftCheck() == false)
+            return;
+
         Monster mob = FindBackMonster();
 
         if (mob == null)

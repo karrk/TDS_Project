@@ -5,12 +5,31 @@ using System;
 public class DataManager
 {
     private float[] _groundTopEdges;
+    private HeroController _hero;
     [SerializeField] private MonsterData[] _monsterDatas;
     [SerializeField] private BulletData[] _bulletDatas;
+    public Vector3 HeroPos
+    {
+        get
+        {
+            if (_hero == null)
+                return Vector3.back;
+
+            return _hero.CurrentPos;
+        }
+    }
 
     public DataManager()
     {
         _groundTopEdges = new float[(int)E_Way.Size];
+    }
+
+    /// <summary>
+    /// 현재 조작되는 Hero 를 설정합니다.
+    /// </summary>
+    public void SetHero(HeroController m_controller)
+    {
+        this._hero = m_controller;
     }
 
     /// <summary>

@@ -6,6 +6,7 @@ public class HeroController : InitBehaviour, IDamageable
     private Gun _gun;
     private TargetFinder _finder;
     private SpriteRenderer _renderer;
+    private TruckController _truck;
     [SerializeField] private float _hp;
     [SerializeField] private float _shootingCool;
     [SerializeField, ReadOnly] private bool _isShootable = true;
@@ -16,12 +17,15 @@ public class HeroController : InitBehaviour, IDamageable
     public override int InitOrder => 1;
     private Vector3 shootPos;
 
+    public Vector3 CurrentPos => transform.position;
+
     protected override void Awake()
     {
         base.Awake();
         _gun = GetComponentInChildren<Gun>();
         _finder = GetComponentInParent<TargetFinder>();
         _renderer = GetComponent<SpriteRenderer>();
+        _truck = GetComponentInParent<TruckController>();
     }
 
     private void Start()
@@ -34,6 +38,8 @@ public class HeroController : InitBehaviour, IDamageable
     {
         Manager.Input.OnInputClick -= UseControl;
         Manager.Input.OnInputClickUp -= StopControl;
+
+        _truck.Stop();
     }
 
     /// <summary>

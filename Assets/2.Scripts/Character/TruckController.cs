@@ -34,11 +34,17 @@ public class TruckController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 몬스터가 영역을 넘지 못하는 벽을 활성/비활성화 합니다.
+    /// </summary>
     public void SetActiveWall(bool m_active)
     {
         this._boxCollider.enabled = m_active;
     }
 
+    /// <summary>
+    /// 인스펙터에서 지정된 속도로 이동을 시작합니다.
+    /// </summary>
     private void Move()
     {
         if (_rb.velocity.x < _brakeVelocity)
@@ -52,5 +58,13 @@ public class TruckController : MonoBehaviour
             return;
 
         _rb.velocity += Vector2.right * _accelPower * Time.deltaTime;
+    }
+
+    /// <summary>
+    /// 트럭의 속도를 0으로 변경합니다.
+    /// </summary>
+    public void Stop()
+    {
+        _accelPower = 0;
     }
 }
