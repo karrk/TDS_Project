@@ -26,7 +26,7 @@ public enum E_MonsterType
 public enum E_Bullet
 {
     None = -1,
-    Basic = 0,
+    BasicBullet = 0,
 
     Size
 }
