@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BulletData
   m_EditorClassIdentifier: 
   _type: 0
-  _moveSpeed: 120
+  _moveSpeed: 100
   _power: 10
-  _bulletCount: 4
+  _bulletCount: 10
   _spreadAngle: 35
