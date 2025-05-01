@@ -1084,6 +1084,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4412179012399302143, guid: 21f116173331cd8499582acddf5ae9ad, type: 3}
+      propertyPath: _data._damagedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412179012399302143, guid: 21f116173331cd8499582acddf5ae9ad, type: 3}
+      propertyPath: _data._damagedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4412179012399302143, guid: 21f116173331cd8499582acddf5ae9ad, type: 3}
+      propertyPath: _data._damagedColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8252862962157660327, guid: 21f116173331cd8499582acddf5ae9ad, type: 3}
       propertyPath: m_Name
       value: Manager
@@ -1191,7 +1203,7 @@ GameObject:
   - component: {fileID: 1489341063}
   m_Layer: 8
   m_Name: Truck
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1226,7 +1238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _limitVelocity: 3
-  _accelPower: 1.2
+  _accelPower: 0
   _brakeVelocity: 0.1
 --- !u!50 &1489341062
 Rigidbody2D:
@@ -1309,10 +1321,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 988428232}
     m_Modifications:
     - target: {fileID: 175888370978376783, guid: 39e73014526a04149a4b4bff2302893b, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 175888370978376783, guid: 39e73014526a04149a4b4bff2302893b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1350,10 +1358,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 175888370978376783, guid: 39e73014526a04149a4b4bff2302893b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6718594211823800976, guid: 39e73014526a04149a4b4bff2302893b, type: 3}
-      propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8958240697474582917, guid: 39e73014526a04149a4b4bff2302893b, type: 3}

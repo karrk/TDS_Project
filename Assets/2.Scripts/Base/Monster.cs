@@ -77,7 +77,9 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
             if (_target != null)
             {
                 if (_target.tag == "Player" || _target.tag == "Hero")
+                {
                     return true;
+                }
             }
 
             return false;
@@ -90,6 +92,7 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
 
     #region 변수
 
+    private SpriteRenderer[] _renderers;
     [SerializeField] private bool _drawBackCast;
     [SerializeField] private bool _drawRangeArea;
     private Collider2D _target;
@@ -111,6 +114,7 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
 
     protected virtual void Awake()
     {
+        _renderers = GetComponentsInChildren<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
         _coll = GetComponent<CapsuleCollider2D>();
         _anim = GetComponent<Animator>();
@@ -238,13 +242,9 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
         _rb.velocity = new Vector2(-1 * _speed, _rb.velocity.y);
     }
 
-    /// <summary>
-    /// 몬스터 사망 시 죽음 로직을 수행합니다.
-    /// </summary>
-    private IEnumerator DeadAction()
+    protected virtual void Dead() 
     {
-        yield return null;
-        Return();
+        _anim.SetBool("IsDead", true);
     }
 
     /// <summary>
@@ -273,7 +273,14 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
 
         if (IsDead == true)
         {
-            StartCoroutine(DeadAction());
+            Dead();
+        }
+        else
+        {
+            for (int i = 0; i < _renderers.Length; i++)
+            {
+                Utils.DamageColorChange(this, _renderers[i], Color.white);
+            }
         }
 
         return IsDead;

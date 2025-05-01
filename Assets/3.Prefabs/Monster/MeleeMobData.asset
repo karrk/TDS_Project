@@ -17,3 +17,4 @@ MonoBehaviour:
   _atkRange: 1
   _hp: 100
   _atkCool: 1.5
+  _power: 2

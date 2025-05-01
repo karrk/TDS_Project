@@ -69,7 +69,7 @@ RectTransform:
   m_Father: {fileID: 4275079931531570784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.362}
+  m_AnchorMax: {x: 1, y: 0.22}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -195,6 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6352321554421462411}
+  - component: {fileID: 8052247172694186086}
   m_Layer: 0
   m_Name: HPPanel
   m_TagString: Untagged
@@ -218,6 +219,19 @@ Transform:
   - {fileID: 5897285488987320740}
   m_Father: {fileID: 360675798204360400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8052247172694186086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470163909460436904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abac6ec72980564a8666f94292b6cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpSlider: {fileID: 134779646897404493}
 --- !u!1 &6198218911138482571
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +317,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.362
+  m_Value: 0.22
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -366,7 +380,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 207781729
+  m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &7740578311010276762
@@ -421,6 +435,7 @@ GameObject:
   - component: {fileID: 6522315550765019297}
   - component: {fileID: 3175506883567667195}
   - component: {fileID: 3099398628568511036}
+  - component: {fileID: 1206204384700252556}
   m_Layer: 3
   m_Name: Box
   m_TagString: Player
@@ -529,6 +544,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4557e4a06176124b92f617472be03b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1206204384700252556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628118391875189848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7772bd01200c29f42a0e1589273d7902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 50
 --- !u!1 &6872163726244765423
 GameObject:
   m_ObjectHideFlags: 0
