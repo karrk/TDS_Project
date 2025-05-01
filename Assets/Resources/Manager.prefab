@@ -48,7 +48,11 @@ MonoBehaviour:
     _monsterDatas:
     - {fileID: 11400000, guid: 388370557b0491e4db24c37e17b4caea, type: 2}
     - {fileID: 11400000, guid: f38fe527bce2d0c419f23122f02d6a9d, type: 2}
+    _bulletDatas:
+    - {fileID: 11400000, guid: 918f9fa2576f57c48953899e4b435ad1, type: 2}
   _pool:
     _monsterPrefabs:
     - {fileID: 11400000, guid: 4c5d072183c986f4ca3faf6979cf38ea, type: 2}
     - {fileID: 11400000, guid: ee7c85466a332104589a8c86bfad9d58, type: 2}
+    _bulletPrefabs:
+    - {fileID: 11400000, guid: 90c47d704ea63ec4cbcd392dfe2d8201, type: 2}

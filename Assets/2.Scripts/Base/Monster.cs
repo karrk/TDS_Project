@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class Monster : MonoBehaviour, IPooling, IDamageable
+public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
 {
     protected static E_MonsterType GetDetailType(Enum m_type)
     {
@@ -88,6 +88,10 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
 
     public Collider2D Target => _target;
 
+    public abstract int TargetPriority { get; }
+
+    public bool IsNoneTarget => IsDead == true;
+
     #endregion
 
     #region 변수
@@ -147,6 +151,11 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
     /// </summary>
     public virtual void LogicStart()
     {
+        foreach (var renderer in _renderers)
+        {
+            renderer.color = Color.white;
+        }
+
         OverWriteData();
         StartCoroutine(MainLogic());
     }
@@ -161,7 +170,13 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
         while (true)
         {
             if (IsDead == true)
+            {
+                _rb.velocity = Vector2.zero;
                 break;
+            }
+                
+            else
+                Move();
 
             if (IsOnRanged == true && IsAttacked == false)
             {
@@ -169,7 +184,6 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
                 IsAttacked = true;
             }
 
-            Move();
             LiftBackMonster();
 
             yield return null;
@@ -244,7 +258,7 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
 
     protected virtual void Dead() 
     {
-        _anim.SetBool("IsDead", true);
+        Return();
     }
 
     /// <summary>
@@ -269,6 +283,9 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable
 
     public bool OnDamage(float m_value)
     {
+        if (IsDead)
+            return false;
+
         this._hp = Mathf.Clamp(_hp - m_value, 0, _hp - m_value);
 
         if (IsDead == true)

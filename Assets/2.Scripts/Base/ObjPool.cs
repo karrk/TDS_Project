@@ -59,5 +59,6 @@ public class ObjPool
     public void Return(IPooling m_obj)
     {
         _pool.Add(m_obj.Obj);
+        m_obj.Obj.SetActive(false);
     }
 }
