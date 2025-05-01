@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -20,8 +21,12 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
 
     #region 프로퍼티
 
+    public abstract int TargetPriority { get; }
     public abstract Enum Type { get; }
+
+    public bool IsNoneTarget => IsDead == true;
     public GameObject Obj => gameObject;
+    public Collider2D Target => _target;
     public bool IsDead => _hp <= 0;
     public float Power => _power;
     private Vector2 LiftBoxSize => new Vector2(_coll.size.x/2, _coll.size.y/4);
@@ -86,12 +91,6 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
         }
     }
 
-    public Collider2D Target => _target;
-
-    public abstract int TargetPriority { get; }
-
-    public bool IsNoneTarget => IsDead == true;
-
     #endregion
 
     #region 변수
@@ -124,6 +123,11 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
         _anim = GetComponent<Animator>();
     }
 
+    private void OnDisable()
+    {
+        StopCoroutine(MainLogic());
+    }
+
     /// <summary>
     /// 몬스터 오브젝트의 충돌 레이어를 설정합니다.
     /// 대상 바닥 콜라이더, 같은 경로 내 위치한 몬스터 콜라이더
@@ -147,15 +151,26 @@ public abstract class Monster : MonoBehaviour, IPooling, IDamageable, ITargeting
     }
 
     /// <summary>
-    /// 몬스터 스폰 후 모든 과정을 시작합니다.
+    /// 행동 시작 전, 각 상태를 초기화합니다.
     /// </summary>
-    public virtual void LogicStart()
+    private void ResetOptions()
     {
+        _isLifting = false;
+        IsAttacked = false;
+        _target = null;
+
         foreach (var renderer in _renderers)
         {
             renderer.color = Color.white;
         }
+    }
 
+    /// <summary>
+    /// 몬스터 스폰 후 모든 과정을 시작합니다.
+    /// </summary>
+    public virtual void LogicStart()
+    {
+        ResetOptions();
         OverWriteData();
         StartCoroutine(MainLogic());
     }
