@@ -8,6 +8,7 @@ public class Manager : MonoBehaviour
     private static Manager _instance = null;
     public static Transform Dir => _instance.transform;
 
+    public static InputManager Input { get; } = new InputManager();
     public static InitManager Init { get; } = new InitManager();
     public static DataManager Data { get; private set; }
     [SerializeField] private DataManager _data;
@@ -46,6 +47,11 @@ public class Manager : MonoBehaviour
         yield return null; // 한 프레임 스킵 (초기화 컴포넌트 등록)
         ManagerInit();
         Init.Init();
+    }
+
+    private void Update()
+    {
+        Input.Update();
     }
 }
 
