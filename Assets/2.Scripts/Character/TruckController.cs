@@ -7,15 +7,16 @@ public class TruckController : MonoBehaviour
     [SerializeField] private float _accelPower;
     [SerializeField] private float _brakeVelocity;
     
-
     private Rigidbody2D _rb;
-    private CapsuleCollider2D _coll;
+    private CapsuleCollider2D _capsuleColl;
+    private BoxCollider2D _boxCollider;
     public float Speed => _rb.velocity.x;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _coll = GetComponent<CapsuleCollider2D>();
+        _capsuleColl = GetComponent<CapsuleCollider2D>();
+        _boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Start()
@@ -31,6 +32,11 @@ public class TruckController : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void SetActiveWall(bool m_active)
+    {
+        this._boxCollider.enabled = m_active;
     }
 
     private void Move()
